@@ -1,3 +1,7 @@
+# I'm So Vexy
+* A app for all the amateur & professional vexillologists out there!
+* vex·il·lol·o·gy (/ˌveksəˈläləjē/) (noun) - The study of flags
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
