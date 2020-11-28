@@ -1,8 +1,8 @@
 # I'm So Vexy
+## (Currently Under Construction)
 * A app for all the amateur & professional vexillologists out there!
 * vex·il·lol·o·gy (/ˌveksəˈläləjē/) (noun) - The study of flags
 
-## (Currently Under Construction)
 
 # Getting Started with Create React App
 

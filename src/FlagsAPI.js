@@ -1,7 +1,3 @@
-export const logTest = () => {
-   console.log('%cFlagsAPI', 'color: tomato');
-}
-
 export const getAllCountries = () => {
    return fetch('https://restcountries.eu/rest/v2/all')
       .then(response => response.json())

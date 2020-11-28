@@ -2,38 +2,61 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.scss';
 import * as FlagsAPI from './FlagsAPI';
+import Search from './Search';
 
 // https://main.d3kiifg2k1bcmx.amplifyapp.com/
 
+const data_countries = [];
+
 class App extends Component {
    state = {
-      countries: []
+      countries_visible: [],
+      searchTerm: '',
+      // region:
    }
 
    componentDidMount() {
-      FlagsAPI.logTest();
       FlagsAPI.getAllCountries()
-         // .then(countries => {
-         //    this.setState({ countries: [...this.state.countries, countries] });
-         // });
-         .then(countries => {
+         .then(res => {
+            res.forEach((item) => {
+               data_countries.push(item);
+            });
+
             this.setState(() => {
-               return { countries };
+               return { countries_visible: data_countries };
             });
          });
    }
 
+   handleSearchChange = searchInputValue => {
+      this.setState({
+         searchTerm: searchInputValue
+      });
+   }
+
+   filterCountry = (searchInputValue, value) => {
+      if (value.tagName === 'INPUT') {
+         searchInputValue = searchInputValue.toLowerCase();
+         this.setState({
+            countries_visible: data_countries.filter(country => country.name.toLowerCase().includes(searchInputValue))
+         });
+      }
+   }
+
    render() {
-      console.log(this.state.countries[0]);
       return (
-     <div className="App">
+         <div className="App">
           <header className="header">
              <h1>I'm So Vexy!</h1>
              <p>Under Construction...</p>
           </header>
           <main>
+            <div className="below-header">
+               <Search onSearchChange={this.handleSearchChange} onFilter={this.filterCountry} />
+               <div>{this.state.searchTerm}</div>
+            </div>
             <ul className="main-ul">
-             {this.state.countries.map(country => (
+             {this.state.countries_visible.map(country => (
                 <li
                 key={country.name}
                 className="country">
@@ -41,12 +64,11 @@ class App extends Component {
                   <h2 className="country-name">{country.name}</h2>
                   <img className="country-flag" src={country.flag} />
                 </div>
-
                 </li>
              ))}
              </ul>
           </main>
-        </div>
+         </div>
      )
    }
 
