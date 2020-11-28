@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.scss';
 import * as FlagsAPI from './FlagsAPI';
 import Search from './Search';
+import Region from './Region';
 
 // https://main.d3kiifg2k1bcmx.amplifyapp.com/
 
