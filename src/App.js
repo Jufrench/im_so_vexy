@@ -5,7 +5,7 @@ import * as FlagsAPI from './FlagsAPI';
 import Search from './Search';
 import Region from './Region';
 import Country from './Country';
-import { Route } from 'react-router-dom';
+import { Route, useHistory } from 'react-router-dom';
 
 // https://main.d3kiifg2k1bcmx.amplifyapp.com/
 
@@ -62,26 +62,38 @@ class App extends Component {
    }
 
    render() {
+
       return (
          <div className="App">
-          <header className="header">
-             <h1>I'm So Vexy!</h1>
-             <p>Under Construction...</p>
-          </header>
-          <main>
-            <div className="below-header">
-               <Search onSearchChange={this.handleSearchChange} />
-               <div>{this.state.searchTerm}</div>
-               <Region onRegionChange={this.handleRegionChange} />
-            </div>
-            <ul className="main-ul">
-               {this.state.countries_visible.map(country => (
-                  <Country key={country.name} country={country} />
-               ))}
-             </ul>
-          </main>
+            <Route exact path="/" render={() => (
+               <React.Fragment>
+                  <header className="header">
+                     <h1>I&apos;m So Vexy!</h1>
+                     <p>Under Construction...</p>
+                  </header>
+                  <main>
+                     <div className="below-header">
+                        <Search onSearchChange={this.handleSearchChange} />
+                        <div>{this.state.searchTerm}</div>
+                        <Region onRegionChange={this.handleRegionChange} />
+                     </div>
+                     <ul className="main-ul">
+                        {this.state.countries_visible.map(country => (
+                           <Country key={country.name} country={country} />
+                        ))}
+                     </ul>
+                  </main>
+               </React.Fragment>
+            )} />
+
+            <Route exast path="/countryinfo" render={() => (
+               <React.Fragment>
+                  <button>Back</button>
+                  <h2>HERE I AM!</h2>
+               </React.Fragment>
+            )} />
          </div>
-     )
+      )
    }
 
 }
