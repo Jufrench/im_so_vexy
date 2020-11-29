@@ -4,6 +4,8 @@ import './App.scss';
 import * as FlagsAPI from './FlagsAPI';
 import Search from './Search';
 import Region from './Region';
+import Country from './Country';
+import { Route } from 'react-router-dom';
 
 // https://main.d3kiifg2k1bcmx.amplifyapp.com/
 
@@ -13,7 +15,6 @@ class App extends Component {
    state = {
       countries_visible: [],
       searchTerm: '',
-      // region:
    }
 
    componentDidMount() {
@@ -29,17 +30,33 @@ class App extends Component {
          });
    }
 
-   handleSearchChange = searchInputValue => {
+   handleSearchChange = inputValue => {
       this.setState({
-         searchTerm: searchInputValue
+         searchTerm: inputValue
+      });
+
+      inputValue = inputValue.toLowerCase();
+      const searchResults = data_countries.filter(country => {
+         return country.name.toLowerCase().includes(inputValue);
+      });
+
+      this.setState({
+         countries_visible: searchResults
       });
    }
 
-   filterCountry = (searchInputValue, value) => {
-      if (value.tagName === 'INPUT') {
-         searchInputValue = searchInputValue.toLowerCase();
+   handleRegionChange = selectValue => {
+      if (selectValue === 'All') {
          this.setState({
-            countries_visible: data_countries.filter(country => country.name.toLowerCase().includes(searchInputValue))
+            countries_visible: data_countries
+         });
+      } else {
+         const filter = data_countries.filter(country => {
+            return country.region === selectValue;
+         });
+
+         this.setState({
+            countries_visible: filter
          });
       }
    }
@@ -53,20 +70,14 @@ class App extends Component {
           </header>
           <main>
             <div className="below-header">
-               <Search onSearchChange={this.handleSearchChange} onFilter={this.filterCountry} />
+               <Search onSearchChange={this.handleSearchChange} />
                <div>{this.state.searchTerm}</div>
+               <Region onRegionChange={this.handleRegionChange} />
             </div>
             <ul className="main-ul">
-             {this.state.countries_visible.map(country => (
-                <li
-                key={country.name}
-                className="country">
-                <div className="country-inner">
-                  <h2 className="country-name">{country.name}</h2>
-                  <img className="country-flag" src={country.flag} />
-                </div>
-                </li>
-             ))}
+               {this.state.countries_visible.map(country => (
+                  <Country key={country.name} country={country} />
+               ))}
              </ul>
           </main>
          </div>
