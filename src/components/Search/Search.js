@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Search.scss';
 
 class Search extends Component {
    constructor(props) {
@@ -13,13 +14,16 @@ class Search extends Component {
 
    render() {
       return (
-         <div>
-            <input
-               type="text"
-               placeholder="Search for a country"
-               ref={this.inputRef}
-               onChange={this.handleSearchChange} />
-         </div>
+         <section className="search">
+            <div className="input-wrap">
+               <i className="fas fa-search"></i>
+               <label>Search for a country</label>
+               <input
+                  type="text"
+                  ref={this.inputRef}
+                  onChange={this.handleSearchChange} />
+            </div>
+         </section>
       )
    }
 }

@@ -3,6 +3,13 @@
 * A app for all the amateur & professional vexillologists out there!
 * vex·il·lol·o·gy (/ˌveksəˈläləjē/) (noun) - The study of flags
 
+### To Do
+* Add font awesome icons
+* Set up Light/Dark mode
+* Manage when a country doesn't have a capital
+   * Ex: United States Minor Outlying Islands
+* Put commas in population
+* Update font family (if desired)
 
 # Getting Started with Create React App
 

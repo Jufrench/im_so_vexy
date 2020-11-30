@@ -1,0 +1,27 @@
+.country-item {
+   padding-bottom: 40px;
+   .country-inner {
+      box-shadow: 0 0 10px 2px rgba(204, 204, 204, 0.4);
+      text-decoration: none;
+      display: block;
+      color: #333;
+      border-radius: 5px;
+   }
+   img {
+      width: 100%;
+      border-radius: 5px 5px 0 0;
+   }
+   .text-wrap {
+      padding: 24px 24px 46px 24px;
+   }
+   h2 {
+      font-size: 1.25em;
+      margin-bottom: 16px;
+   }
+   p + p {
+      margin-top: 8px;
+   }
+   p span {
+      font-weight: 600;
+   }
+}

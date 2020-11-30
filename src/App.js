@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.scss';
 import * as FlagsAPI from './FlagsAPI';
+import Header from './components/Header/Header.js';
+import Search from './components/Search/Search.js';
+import Region from './components/Region/Region.js';
 import Main from './components/Main/Main.js';
 import Details from './components/Details/Details.js';
 import { Route, Switch } from 'react-router-dom';
@@ -45,7 +48,7 @@ class App extends Component {
    }
 
    handleRegionChange = selectValue => {
-      if (selectValue === 'All') {
+      if (selectValue === '0') {
          this.setState({
             countries_visible: data_countries
          });
@@ -64,20 +67,21 @@ class App extends Component {
 
       return (
          <div className="App">
-            <header className="header">
-               <h1>I&apos;m So Vexy!</h1>
-               <p>Under Construction...</p>
-            </header>
-            <Switch>
-               <Route exact path="/" render={() => (
-                  <Main
-                     search_term={this.state.searchTerm}
-                     countries_visible={this.state.countries_visible}
-                     onSearchChange={this.handleSearchChange}
-                     onRegionChange={this.handleRegionChange} />
-               )} />
-               <Route path="/details" component={Details} />
-            </Switch>
+            <div className="inner-wrap">
+               <Header />
+               <Switch>
+                  <Route exact path="/" render={() => (
+                     <div className="sub-header-wrap">
+                        <Search onSearchChange={this.handleSearchChange} />
+                        <Region onRegionChange={this.handleRegionChange} />
+                        <Main
+                           search_term={this.state.searchTerm}
+                           countries_visible={this.state.countries_visible} />
+                     </div>
+                  )} />
+                  <Route path="/details" component={Details} />
+               </Switch>
+            </div>
          </div>
       )
    }
