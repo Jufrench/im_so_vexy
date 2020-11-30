@@ -16,12 +16,12 @@ class Search extends Component {
       return (
          <section className="search">
             <div className="input-wrap">
-               <i className="fas fa-search"></i>
-               <label>Search for a country</label>
                <input
                   type="text"
                   ref={this.inputRef}
+                  placeholder="Search for a country"
                   onChange={this.handleSearchChange} />
+               <i className="fas fa-search"></i>
             </div>
          </section>
       )

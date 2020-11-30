@@ -72,8 +72,10 @@ class App extends Component {
                <Switch>
                   <Route exact path="/" render={() => (
                      <div className="sub-header-wrap">
-                        <Search onSearchChange={this.handleSearchChange} />
-                        <Region onRegionChange={this.handleRegionChange} />
+                        <div className="above-main">
+                           <Search onSearchChange={this.handleSearchChange} />
+                           <Region onRegionChange={this.handleRegionChange} />
+                        </div>
                         <Main
                            search_term={this.state.searchTerm}
                            countries_visible={this.state.countries_visible} />

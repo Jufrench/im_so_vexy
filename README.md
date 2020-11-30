@@ -10,6 +10,7 @@
    * Ex: United States Minor Outlying Islands
 * Put commas in population
 * Update font family (if desired)
+* Use label instead of placeholder for input search
 
 # Getting Started with Create React App
 

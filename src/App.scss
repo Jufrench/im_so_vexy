@@ -25,6 +25,16 @@ h1, h2, h3, h4, h5, p {
    grid-template-columns: 1fr;
 }
 
-.sub-header-wrap {
+.above-main {
    padding: 24px 16px;
+
+   @media only screen and (min-width: 900px) {
+      padding: 48px 80px 0;
+      display: flex;
+      justify-content: space-between;
+   }
+}
+
+.sub-header-wrap {
+
 }

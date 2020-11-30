@@ -1,22 +1,15 @@
 .search {
-   padding-bottom: 24px;
+   margin-bottom: 24px;
+
+   @media only screen and (min-width: 900px) {
+      margin: 0;
+      width: 25%;
+   }
    .input-wrap {
       position: relative;
       box-shadow: 0 0 10px 2px rgba(204, 204, 204, 0.4);
       border-radius: 5px;
-   }
-   .fa-search {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: 32px;
-   }
-   label {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: 22%;
-      font-size: .975em;
+      overflow: hidden;
    }
    input {
       width: 100%;
@@ -24,5 +17,28 @@
       border: none;
       border-radius: 5px;
       padding: 0;
+      padding-left: 60px;
+      transform: translateY(0);
+   }
+   label {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 22%;
+      font-size: .975em;
+      transition: top .3s ease-in-out;
+      // z-index: 0;
+   }
+   input:focus + label {
+      top: -50%;
+   }
+   // input:focus + .fa-search:before {
+   //    color: #11875d;
+   // }
+   .fa-search {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 32px;
    }
 }
