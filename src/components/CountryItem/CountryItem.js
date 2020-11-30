@@ -19,13 +19,9 @@ const CountryItem = props => {
       //       return currency.name;
       //    }
       // }),
-      languages: country.languages.map(lang => lang.name)
+      languages: country.languages.map(lang => lang.name),
+      borders: country.borders
    };
-
-   // if (countryDetails.name === 'Zimbabwe') {
-   //    if (countryDetails.currencies.name)
-   //    console.log(countryDetails);
-   // }
 
    return (
       // <li className="country">
@@ -53,14 +49,16 @@ const CountryItem = props => {
       // </li>
       // =======================
       <li className="country">
-         <Link
-            to={{
+         <Link to={{
                pathname: `/details/${props.country.name}`,
                state: countryDetails
             }}>
             <div className="country-inner">
               <h2 className="country-name">{props.country.name}</h2>
-              <img className="country-flag" src={props.country.flag} />
+              <img
+                  className="country-flag"
+                  src={props.country.flag}
+                  alt={"Flag of " + country.name} />
             </div>
          </Link>
       </li>

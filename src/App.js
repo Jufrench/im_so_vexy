@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.scss';
 import * as FlagsAPI from './FlagsAPI';
-import Search from './Search';
-import Region from './Region';
-import CountryItem from './CountryItem';
-import Details from './Details';
+import Main from './components/Main/Main.js';
+import Details from './components/Details/Details.js';
 import { Route, Switch } from 'react-router-dom';
 
 
@@ -53,12 +50,12 @@ class App extends Component {
             countries_visible: data_countries
          });
       } else {
-         const filter = data_countries.filter(country => {
+         const filtered_countries = data_countries.filter(country => {
             return country.region === selectValue;
          });
 
          this.setState({
-            countries_visible: filter
+            countries_visible: filtered_countries
          });
       }
    }
@@ -73,24 +70,12 @@ class App extends Component {
             </header>
             <Switch>
                <Route exact path="/" render={() => (
-                  <React.Fragment>
-                     <main>
-                        <div className="below-header">
-                           <Search onSearchChange={this.handleSearchChange} />
-                           <div>{this.state.searchTerm}</div>
-                           <Region onRegionChange={this.handleRegionChange} />
-                        </div>
-                        <ul className="main-ul">
-
-                           {this.state.countries_visible.map(country => (
-                              <CountryItem key={country.name} country={country} />
-                           ))}
-
-                        </ul>
-                     </main>
-                  </React.Fragment>
+                  <Main
+                     search_term={this.state.searchTerm}
+                     countries_visible={this.state.countries_visible}
+                     onSearchChange={this.handleSearchChange}
+                     onRegionChange={this.handleRegionChange} />
                )} />
-
                <Route path="/details" component={Details} />
             </Switch>
          </div>
