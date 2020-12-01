@@ -2,7 +2,6 @@
    padding-bottom: 40px;
 
    @media only screen and (min-width: 700px) {
-      flex-grow: 1;
       width: 43%;
       padding: 18px;
       // border: 1px solid red;
@@ -11,7 +10,6 @@
    @media only screen and (min-width: 900px) {
       width: 33%;
       padding: 40px;
-      // flex-grow: 0;
    }
 
    @media only screen and (min-width: 1024px) {
