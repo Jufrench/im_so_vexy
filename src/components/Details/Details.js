@@ -236,7 +236,7 @@ const CountryPage = props => {
 
    const handleButtonToHomeClick = () => {
       removeFromVisitedCountries();
-      props.handleShowAllCountries()
+      props.handleShowAllCountries();
    }
 
    if (props.visitedCountries.length === 1) {
