@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import CountryItem from '../CountryItem/CountryItem';
+import CountryItem from '../CountryItem/CountryItem2';
 import './Main.scss';
 
 class Main extends Component {
-
    render() {
       return (
          <main className="main">
@@ -12,9 +11,7 @@ class Main extends Component {
                   <CountryItem 
                      key={country.name} 
                      country={country} 
-                     all_countries={this.props.all_countries} 
-                     setActiveCountry={this.props.setActiveCountry}
-                     activeCountry={this.props.activeCountry} />
+                     all_countries={this.props.all_countries} />
                ))}
             </ul>
          </main>
