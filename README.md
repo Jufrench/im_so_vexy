@@ -19,6 +19,7 @@
          * If on details page and click on a border country, can find country by name prop passed
          * Use "/details:id" to get the name of the country concatenated to the URL
             * Check here (https://codesandbox.io/s/react-router-url-parameters-rrbsb?from-embed=&file=/example.js)
+         * Change styling of input & dropdown
 
 # Getting Started with Create React App
 
