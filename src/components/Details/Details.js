@@ -1,298 +1,187 @@
-import React from 'react';
-import { Link, useLocation  } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
-// import CountryItem from '../CountryItem/CountryItem';
-// import BorderCountry from '../BorderCountry/BorderCountry';
-// import CountryPage from '../CountryPage/CountryPage';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useHistory  } from 'react-router-dom';
+import * as CountriesAPI from '../.././CountriesAPI';
+import BorderCountry from '../BorderCountry/BorderCountry';
 
-// const Details = props => {
-   // DETAILS 1 ===========
-//    const history = useHistory();
-   
-//    let country;
-   
-//    // if (props.location.state.source === 'border_country') {
-//       country = props.location.state;
-//    //    console.log('%cfrom detail page', 'color: tomato');
-//    // } else {
-//    //    country = props.location.state;
-//    //    console.log('%cfrom main page', 'color: goldenrod')
-//    // }
-
-//    return (
-//       <React.Fragment>
-//          <button onClick={() => history.goBack()}>Back</button>
-//          <h1>{country.name}</h1>
-//          {/* <CountryPage country={country} all_countries={props.all_countries} /> */}
-//          <CountryPage country={country} />
-//       </React.Fragment>
-//    )
-// }
-
-// const Details = props => {
-//    // DETAILS 2 ===========
-//    const history = useHistory();
-
-//    // console.log(props);
-//    // console.log(props.location);
-   
-//    // let country = props.location.state;
-//    // console.log('DETAILS');
-//    // console.log(props.activeCountry.borders);
-
-
-
-//    // return (
-//    //    // <React.Fragment>
-//    //    //    <button onClick={() => history.goBack()}>Back</button>
-//    //    //    <h1>{country.name}</h1>
-         
-//    //    //    <CountryPage country={country} />
-//    //    // </React.Fragment>
-
-//    //    <React.Fragment>
-//    //       <button onClick={() => history.goBack()}>Back</button>
-//    //       {/* <h1>{props.activeCountry.name}</h1> */}
-//    //       {/* <ul>
-//    //          {props.activeCountry.borders.map((borderCountry, i) => {
-//    //             // return <li key={i}><Link to="">{borderCountry}</Link></li>
-//    //             return <BorderCountry key={i}><Link to="/details">{borderCountry}</Link></BorderCountry>
-//    //          })}
-//    //       </ul> */}
-//    //       <CountryPage 
-//    //          activeCountry={props.activeCountry}
-//    //          setActiveCountry={props.setActiveCountry}
-//    //          allCountries={props.allCountries} />
-
-//    //    </React.Fragment>
-//    // )
-//    history.location.state = props.activeCountry;
-//    console.log(history.location);
-
-//    // return (
-
-//    //    <React.Fragment>
-//    //       <button onClick={() => history.goBack()}>Back</button>
-//    //       <h1>{props.activeCountry.name}</h1>
-//    //       <ul>
-//    //          {props.activeCountry.borders.map((borderItem, i) => (
-//    //              <BorderCountry 
-//    //                  key={i} 
-//    //                  borderCountryName={borderItem}
-//    //                  setActiveCountry={props.setActiveCountry}
-//    //                  allCountries={props.allCountries} />
-//    //          ))}
-//    //          </ul>
-//    //    </React.Fragment>
-//    // )
+// const CountryPage = props => {
+//    // DETAILS 3 =======
+//    const location = useLocation();
+//    // let match = useRouteMatch();
+//    // console.log(match);
 
 //    const handleSetActiveCountry = event => {
-//       // console.log(event.target.text);
-//       let text = event.target.text;
-//       let newCountry;
-//       props.allCountries.forEach(countryItem => {
-//          if (text === countryItem.name) {
-//             newCountry = countryItem;
+//       const text = event.target.text;
+
+//       let countryToSetActive = props.allCountries.map(countryObj => {
+//          let temp;
+//          if (text === countryObj.name) {
+//             temp = countryObj;
 //          }
+//          return temp;
 //       });
-//       props.setActiveCountry(newCountry);
+//       props.setActiveCountry(countryToSetActive);
 //    }
 
-//    const handleSetActiveCountry = event => {
-//       // console.log(event.target.text);
-//       let text = event.target.text;
-//       let newCountry;
-//       props.allCountries.forEach(countryItem => {
-//          if (text === countryItem.name) {
-//             newCountry = countryItem;
-//          }
-//       });
-//       props.setActiveCountry(newCountry);
+//    const addToVisitedCountries = countryToAdd => {
+//       props.addToVisitedCountries(countryToAdd);
 //    }
 
-//    const manageCountryState = () => {
-//       handleSetActiveCountry();
+//    const removeFromVisitedCountries = () => {
+//       props.removeFromVisitedCountries();
 //    }
 
-//    return (
-//       <React.Fragment>
-//          <button onClick={() => history.goBack()}>Back</button>
+//    const handleBorderCountryClick = event => {
+//       handleSetActiveCountry(event);
+//       addToVisitedCountries(location.pathname);
+//    }
 
-//          <h1>{props.activeCountry.name}</h1>
-//          <ul>
-//             {props.activeCountry.borders.map((borderItem, i) => (
-//                //  <BorderCountry 
-//                //      key={i} 
-//                //      borderCountryName={borderItem}
-//                //      setActiveCountry={props.setActiveCountry}
-//                //      allCountries={props.allCountries} />
+//    const handleBackButtonClick = () => {
+//       props.updateAfterGoingBack();
+//       removeFromVisitedCountries();
+//    }
 
-//                <li key={i}>
-//                   <Link to={{
-//                      pathname: `details/${borderItem}`
-//                   }}
-//                   onClick={manageCountryState}>
-//                      {borderItem}
-//                   </Link>
-//                </li>
-//             ))}
+//    const handleButtonToHomeClick = () => {
+//       removeFromVisitedCountries();
+//       props.handleShowAllCountries();
+//    }
+
+//    if (props.visitedCountries.length === 1) {
+//       return (
+
+//          <React.Fragment>
+//             {/* <Link to="/" onClick={handleBackButtonClick}>Back</Link> */}
+//             <Link to="/" onClick={handleButtonToHomeClick}>Back</Link>
+//             <h1>{props.activeCountry.name}</h1>
+//             <hr />
+//             <ul>
+//                {props.activeCountry.borders.map((borderItem, i) => (   
+//                   <li key={i}>
+//                      <Link 
+//                         to={{ pathname: `/${borderItem}` }}
+//                         onClick={handleBorderCountryClick}>
+//                         {borderItem}
+//                      </Link>
+//                   </li>
+//                ))}
 //             </ul>
-//       </React.Fragment>
-//    )
+//          </React.Fragment>
+
+//          )
+//    } else {
+//       return (
+
+//          <React.Fragment>
+//             {/* <button onClick={() => history.goBack()}>Back</button> */}
+//             {/* <button onClick={handleBackButtonClick}>Back</button> */}
+//             <Link 
+//                to={{ pathname: `/${props.visitedCountries[props.visitedCountries.length-1]}` }}
+//                onClick={handleBackButtonClick}>
+//                   Back
+//                </Link>
+//             <h1>{props.activeCountry.name}</h1>
+//             <hr />
+//             <p>{props.activeCountry.population}</p>
+//             <ul>
+//                {props.activeCountry.borders.map((borderItem, i) => (   
+//                   <li key={i}>
+//                      <Link 
+//                         to={{ pathname: `/${borderItem}` }}
+//                         onClick={handleBorderCountryClick}>
+//                         {borderItem}
+//                      </Link>
+//                   </li>
+//                ))}
+//             </ul>
+//          </React.Fragment>
+
+//       )
+//    }
 // }
 
 const CountryPage = props => {
-   // DETAILS 3 =======
-   // const history = useHistory();
+   // DETAILS 4 =======
    const location = useLocation();
-   // history.location.state = props.activeCountry;
-   // console.log(history.location);
-   // constructor(props) {
-   //    super(props);
+   const urlCode = location.pathname.slice(1, location.pathname.length);
+   const history = useHistory();
+   // console.log(location);
 
+   // console.log('CountryPage #4 props', props);
+   // const value = CountriesAPI.getCountry(props.activeCountry);
 
-   // }
+   // USING PROPS
+   // const the_country = CountriesAPI.getCountry(props.activeCountryCode);
 
-   // const handleSetActiveCountry = event => {
-   //    let text = event.target.text;
-   //    let newCountry;
-   //    props.allCountries.forEach(countryItem => {
-   //       if (text === countryItem.name) {
-   //          newCountry = countryItem;
-   //       }
-   //    });
-   //    props.setActiveCountry(newCountry);
-   // }
+   // USING LOCATION
+   const the_country = CountriesAPI.getCountry(urlCode);
+   const borderCountries = CountriesAPI.getBorderCountriesCodes(the_country.borders);
+   // console.log('borderCountries', borderCountries);
 
-   // const handleSetActiveCountry = event => {
-   //    let text = event.target.text;
-   //    let newCountry;
-   //    props.allCountries.forEach(countryItem => {
-   //       if (text === countryItem.name) {
-   //          newCountry = countryItem;
-   //       }
-   //    });
-   //    props.setActiveCountry(newCountry);
-   // }
-
-   // const manageCountryState = () => {
-   //    handleSetActiveCountry();
-   // }
-   // console.log('COUNTRY PAGE');
-   // console.log(props);
-
-   // const handleSetPreviousCountry = () => {
-   //    // props.allCountries.forEach(countryObj => {
-   //    //    if (props.activeCountry.name === countryObj.name) {
-   //    //       props.setPreviousCountry(countryObj);
-   //    //    }
-   //    // });
-
-   //    props.setPreviousCountry(props.activeCountry);
-   // }
+   // console.log('props', props);
 
    const handleSetActiveCountry = event => {
-      const text = event.target.text;
-
-      props.allCountries.forEach(countryObj => {
-         if (text === countryObj.name) {
-            props.setActiveCountry(countryObj);
-         }
-      });
+      // console.log('handleSetActiveCountry', event.target.parentElement.dataset.alpha3code);
+      // console.log('new border country', CountriesAPI.getCountry(event.target.parentElement.dataset.alpha3code));
+      const borderCountry = CountriesAPI.getCountry(event.target.parentElement.dataset.alpha3code);
+      props.setActiveCountry(borderCountry);
    }
-
-   // const managePreviousActiveCountry = event => {
-   //    // handleSetPreviousCountry();
-   //    // handleSetActiveCountry(event);
-   // }
 
    const addToVisitedCountries = countryToAdd => {
+      // console.log('add to visited countries');
       props.addToVisitedCountries(countryToAdd);
+      // console.log(props.visitedCountries);
    }
 
-   const removeFromVisitedCountries = () => {
-      props.removeFromVisitedCountries();
-   }
-
-   const handleBorderCountryClick = event => {
+   const handleClickEvents = event => {
       handleSetActiveCountry(event);
-      addToVisitedCountries(location.pathname);
+      addToVisitedCountries(the_country.alpha3Code);
    }
 
    const handleBackButtonClick = () => {
-      // if (props.previousCountry === props.activeCountry) {
-      //    console.log('NEED TO FIX THIS');
-      // }
-      // console.log('history before', this.props.location);
-      // props.manageGoingBack(location);
-      // history.goBack();
-      // console.log('history after', this.props.location);
-
-      // history.push('/');
-      // console.log(location);
-      props.updateAfterGoingBack();
-      removeFromVisitedCountries();
+      history.goBack();
+      const previousCountryCode = props.visitedCountries[props.visitedCountries.length - 1];
+      
+      props.setActiveCountry(CountriesAPI.getCountry(previousCountryCode));
+      props.removeFromVisitedCountries();
    }
 
    const handleButtonToHomeClick = () => {
-      removeFromVisitedCountries();
+      props.removeFromVisitedCountries();
       props.handleShowAllCountries();
    }
 
-   if (props.visitedCountries.length === 1) {
-      return (
+   return (
+      <div>
+         {props.visitedCountries.length === 1 ?
+            <Link to="/" onClick={handleButtonToHomeClick}>Back</Link> :
+            <button onClick={handleBackButtonClick}>Back</button>
+         }
+         {/* <button onClick={handleBackButtonClick}>Back</button> */}
+         {/* {console.log(props.visitedCountries.length)} */}
+         <hr />
+         <h1>{the_country.name} ({the_country.alpha3Code})</h1>
+         <ul>
+            {borderCountries.map((borderItem, i) => (
+               // <li key={i}>
+               //    <Link to="">
+               //       {borderItem}
+               //    </Link>
+               // </li>
 
-         <React.Fragment>
-            {/* <Link to="/" onClick={handleBackButtonClick}>Back</Link> */}
-            <Link to="/" onClick={handleButtonToHomeClick}>Back</Link>
-            <h1>{props.activeCountry.name}</h1>
-            <hr />
-            <ul>
-               {props.activeCountry.borders.map((borderItem, i) => (   
-                  <li key={i}>
-                     <Link 
-                        to={{ pathname: `/${borderItem}` }}
-                        onClick={handleBorderCountryClick}>
-                        {borderItem}
-                     </Link>
-                  </li>
-               ))}
-            </ul>
-         </React.Fragment>
-
-         )
-   } else {
-      return (
-
-         <React.Fragment>
-            {/* <button onClick={() => history.goBack()}>Back</button> */}
-            {/* <button onClick={handleBackButtonClick}>Back</button> */}
-            <Link 
-               to={{ pathname: `/${props.visitedCountries[props.visitedCountries.length-1]}` }}
-               // to={{ 
-               //    pathname: props.visitedCountries.length === 1 ?
-               //       "/" : `/${props.visitedCountries[props.visitedCountries.length-1]}`
-               // }}
-               onClick={handleBackButtonClick}>
-                  Back
-               </Link>
-            <h1>{props.activeCountry.name}</h1>
-            <hr />
-            <ul>
-               {props.activeCountry.borders.map((borderItem, i) => (   
-                  <li key={i}>
-                     <Link 
-                        to={{ pathname: `/${borderItem}` }}
-                        onClick={handleBorderCountryClick}>
-                        {borderItem}
-                     </Link>
-                  </li>
-               ))}
-            </ul>
-         </React.Fragment>
-
-      )
-   }
+               // using pathname inside of "to"
+               // =========
+               <li key={i} data-alpha3code={borderItem.alpha3Code}>
+                  <Link 
+                     to={{
+                        pathname: `/${borderItem.alpha3Code}`
+                     }}
+                     onClick={handleClickEvents}>
+                     {borderItem.name} ({borderItem.alpha3Code})
+                  </Link>
+               </li>
+            ))}
+         </ul>
+      </div>
+   )
 }
 
 export default CountryPage;

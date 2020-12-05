@@ -1,5 +1,5 @@
-// import React from 'react';
-import React, { Component } from 'react';
+import React from 'react';
+// import React, { Component } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './CountryItem.scss';
 
@@ -121,7 +121,14 @@ const CountryItem = props => {
    // console.log(location);
 
    const handleSetActiveCountry = () => {
+      // if you want to pass in the whole object
       props.setActiveCountry(props.country);
+      // console.log(props.country);
+
+      // if you want to pass in the alpha 3 code
+      // props.setActiveCountry(props.country.alpha3Code);
+      // console.log(props.country.alpha3Code);
+
    }
 
    const addToVisitedCountries = countryToAdd => {
@@ -131,17 +138,17 @@ const CountryItem = props => {
    const manageClickEvents = () => {
       handleSetActiveCountry();
       addToVisitedCountries(location.pathname);
+      // setTimeout(() => {
+      //    console.log('location.pathname', location.pathname);
+      // }, 2000);
    }
 
       return (
-         <li className="country-item">
+         <li className="country-item" data-alpha3code={props.country.alpha3Code}>
             <Link
-               onClick={manageClickEvents}
                className="country-inner"
-               to={{
-                  pathname: `/${props.country.name}`,
-                  state: { fromHome: true }
-               }}>
+               onClick={manageClickEvents}
+               to={{ pathname: `/${props.country.alpha3Code}` }}>
                <img
                   className="country-flag"
                   src={props.country.flag}
