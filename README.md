@@ -11,12 +11,10 @@
 * Put commas in population
 * Update font family (if desired)
 * Use label instead of placeholder for input search
-<<<<<<< HEAD
-=======
 * Manage when on a detail page, and clicking on a border country
 * Change styling of input & dropdown
+* Refactor dark/light mode toggle
 
->>>>>>> abe812b6fe9c1caddde2b08d63fc5fdeacbb14a7
 
 # Getting Started with Create React App
 

@@ -44,7 +44,10 @@ const CountryPage = props => {
       <div>
          {props.visitedCountries.length === 1 ?
             <Link to="/" onClick={handleButtonToHomeClick}>Back</Link> :
-            <button onClick={handleBackButtonClick}>Back</button>
+            <Link 
+               to={{ pathname: props.visitedCountries[props.visitedCountries.length - 1] }} 
+               onClick={handleBackButtonClick}>Back
+            </Link>
          }
          <hr />
          <h1>{the_country.name}</h1>

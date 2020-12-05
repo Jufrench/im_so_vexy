@@ -100,12 +100,25 @@ class App extends Component {
       this.setState({ visitedCountries: copyVisitedCountries });
    }
 
+   handleToggleLightDarkMode = () => {
+      this.setState(prevState => ({
+         darkMode: !prevState.darkMode
+      }));
+
+      setTimeout(() => {
+         console.log(this.state.darkMode);
+      }, 1000);
+   }
+
    render() {
       return (
          <div className="App">
+            {/* <div className={this.state.darkMode ? 'darkmode' : 'lightmode'}> */}
             <div className={this.state.darkMode ? 'darkmode' : 'lightmode'}>
-               {/* <Header toggleLightDarkMode={this.handleToggleLightDarkMode} /> */}
-               <Header />
+               {/* <Header /> */}
+               <Header 
+                  toggleLightDarkMode={this.handleToggleLightDarkMode}
+                  darkModeState={this.state.darkMode} />
                <Switch>
 
                   {/* ===== ROUTE: HOME ===== */}
