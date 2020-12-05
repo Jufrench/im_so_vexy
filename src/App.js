@@ -16,6 +16,7 @@ class App extends Component {
       searchTerm: '',
       activeCountry: '',
       visitedCountries: [],
+      darkMode: false,
    }
 
    componentDidMount() {
@@ -102,10 +103,12 @@ class App extends Component {
    render() {
       return (
          <div className="App">
-            <div className="inner-wrap">
+            <div className={this.state.darkMode ? 'darkmode' : 'lightmode'}>
+               {/* <Header toggleLightDarkMode={this.handleToggleLightDarkMode} /> */}
                <Header />
                <Switch>
 
+                  {/* ===== ROUTE: HOME ===== */}
                   <Route exact path="/" render={() => (
                      <div className="sub-header-wrap">
                         <div className="above-main">
@@ -116,7 +119,7 @@ class App extends Component {
                            <ul className="main-ul">
                               {this.state.countries_visible.map(country => (
                                  <CountryItem 
-                                    key={country.name} 
+                                    key={country.alpha3Code} 
                                     country={country} 
                                     all_countries={data_countries} 
                                     setActiveCountry={this.handleSetActiveCountry}
@@ -128,6 +131,7 @@ class App extends Component {
                      </div>
                   )} />
 
+                  {/* ===== ROUTE: COUNTRY PAGE ===== */}
                   <Route 
                      path={`/${this.state.activeCountry.alpha3Code}`}
                      render={() => (

@@ -1,13 +1,21 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import './Header.scss';
 
-const Header = () => {
+const Header = props => {
+   const handleToggleLightDarkMode = () => {
+      // props.toggleLightDarkMode();
+      if (document.querySelector('.App > div').classList.contains('darkmode')) {
+         document.querySelector('.App > div').classList.remove('darkmode');
+      } else {
+         document.querySelector('.App > div').classList.add('darkmode');
+      }
+   }
+
    return (
       <header className="header do-flex">
          <h1>I&apos;m So Vexy!</h1>
          <div className="light-dark">
-            <button>Light/Dark Mode</button>
+            <button onClick={handleToggleLightDarkMode}>Light/Dark Mode</button>
          </div>
       </header>
    )
