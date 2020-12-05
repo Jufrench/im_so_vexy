@@ -1,61 +1,72 @@
 import React from 'react';
+import { Link, useLocation, useHistory  } from 'react-router-dom';
+import * as CountriesAPI from '../../CountriesAPI';
 import BorderCountry from '../BorderCountry/BorderCountry';
 
 const CountryPage = props => {
-    // console.log('%cCountry Page', 'color: skyblue');
-    // console.log(props);
-    // console.log('borders', props.country.borders);
-    // let country = props.country;
-    // console.log('%c=== Country Page ===', 'color: tomato');
-    // console.log(props);
+   const location = useLocation();
+   const urlCode = location.pathname.slice(1, location.pathname.length);
+   const history = useHistory();
 
-    // if (props.country.source === 'border_country') {
-    //     country = props.country;
-    //     // country.borders = [];
-    // } else {
-    //     country = props.country;
-    // }
+   // USING PROPS
+   // const the_country = CountriesAPI.getCountry(props.activeCountryCode);
 
-    // const borderCountryData = [];
-    
-    return (
-        <div>
-            <h1>{props.activeCountry.name}</h1>
-            {/* <p>{country.nativeName}</p>
-            <p>{country.population}</p>
-            <p>{country.region}</p>
-            <p>{country.subregion}</p>
-            <p>{country.capital}</p>
-            <p>{country.topLevelDomain}</p>
-            <p>{country.currencies}</p>
-            <p>{country.languages}</p> */}
-            {/* <ul>
-            {country.borders.map((borderItem, i) => (
-                <BorderCountry 
-                    key={i} 
-                    borderCountryName={borderItem.name} 
-                    nativeName={borderItem.nativeName} 
-                    population={borderItem.population} 
-                    region={borderItem.region} 
-                    subregion={borderItem.subregion} 
-                    capital={borderItem.capital} 
-                    topLevelDomain={borderItem.topLevelDomain} 
-                    currencies={borderItem.currencies} 
-                    languages={borderItem.languages} 
-                    borders={borderItem.borders} />
+   // USING LOCATION
+   const the_country = CountriesAPI.getCountry(urlCode);
+   const borderCountries = CountriesAPI.getBorderCountriesCodes(the_country.borders);
+
+   const handleSetActiveCountry = event => {
+      const borderCountry = CountriesAPI.getCountry(event.target.parentElement.dataset.alpha3code);
+      props.setActiveCountry(borderCountry);
+   }
+
+   const addToVisitedCountries = countryToAdd => {
+      props.addToVisitedCountries(countryToAdd);
+   }
+
+   const handleClickEvents = event => {
+      handleSetActiveCountry(event);
+      addToVisitedCountries(the_country.alpha3Code);
+   }
+
+   const handleBackButtonClick = () => {
+      history.goBack();
+      const previousCountryCode = props.visitedCountries[props.visitedCountries.length - 1];
+      
+      props.setActiveCountry(CountriesAPI.getCountry(previousCountryCode));
+      props.removeFromVisitedCountries();
+   }
+
+   const handleButtonToHomeClick = () => {
+      props.removeFromVisitedCountries();
+      props.handleShowAllCountries();
+   }
+
+   return (
+      <div>
+         {props.visitedCountries.length === 1 ?
+            <Link to="/" onClick={handleButtonToHomeClick}>Back</Link> :
+            <button onClick={handleBackButtonClick}>Back</button>
+         }
+         <hr />
+         <h1>{the_country.name} ({the_country.alpha3Code})</h1>
+         <img src={the_country.flag}></img>
+         <p>{the_country.population}</p>
+         <ul>
+            {borderCountries.map((borderItem, i) => (
+               <li key={i} data-alpha3code={borderItem.alpha3Code}>
+                  <Link 
+                     to={{
+                        pathname: `/${borderItem.alpha3Code}`
+                     }}
+                     onClick={handleClickEvents}>
+                     {borderItem.name} ({borderItem.alpha3Code})
+                  </Link>
+               </li>
             ))}
-            </ul> */}
-            <ul>
-            {props.activeCountry.borders.map((borderItem, i) => (
-                <BorderCountry 
-                    key={i} 
-                    borderCountryName={borderItem}
-                    setActiveCountry={props.setActiveCountry}
-                    allCountries={props.allCountries} />
-            ))}
-            </ul>
-        </div>
-    )
+         </ul>
+      </div>
+   )
 }
 
 export default CountryPage;
