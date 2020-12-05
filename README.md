@@ -12,14 +12,8 @@
 * Update font family (if desired)
 * Use label instead of placeholder for input search
 * Manage when on a detail page, and clicking on a border country
-   * Options:
-      1 Set up an "active country" state, and whatever country gets clicked is active
-         * Pass active country to details page
-         * Find index of country in country list and use data
-         * If on details page and click on a border country, can find country by name prop passed
-         * Use "/details:id" to get the name of the country concatenated to the URL
-            * Check here (https://codesandbox.io/s/react-router-url-parameters-rrbsb?from-embed=&file=/example.js)
-         * Change styling of input & dropdown
+* Change styling of input & dropdown
+
 
 # Getting Started with Create React App
 
