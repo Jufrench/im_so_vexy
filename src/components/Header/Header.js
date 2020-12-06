@@ -60,7 +60,7 @@ const Header = props => {
    // }
 
    return (
-      <header className="header do-flex">
+      <header className="header do-flex box-shadow">
          {/* <h1>I&apos;m So Vexy!</h1> */}
          <h1><Link to="/">I&apos;m So Vexy!</Link></h1>
          <div className="light-dark">

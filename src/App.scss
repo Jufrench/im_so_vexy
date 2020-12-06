@@ -4,6 +4,10 @@ $darkmode-text-color: #fff;
 $text-color: #333;
 $focus-red: #ed4337;
 $black: #333;
+$white: #fff;
+
+// FIXED HEADER VARIABLES
+// $sticky-above-main-margin-top: 80px;
 
 @mixin focus-style {
    outline: 2px dotted $focus-red;
@@ -52,9 +56,8 @@ h1, h2, h3, h4, h5, p {
    grid-template-columns: 1fr;
 }
 
-// DARKMODE
-.App .darkmode {
-   background: $darkmode-background-dark;
+.box-shadow {
+   box-shadow: 0 2px 4px #ccc;
 }
 
 .above-main {
@@ -83,5 +86,41 @@ h1, h2, h3, h4, h5, p {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+   }
+}
+
+// STICKY POSITION STYLING
+.sticky {
+   .header {
+      background: $white;
+      z-index: 10;
+      position: fixed;
+      width: 100%;
+   }
+   .above-main {
+      position: fixed;
+      margin-top: 79px;
+      background: $white;
+      width: 100%;
+      padding-bottom: 24px;
+   }
+   .main {
+      padding-top: 287px;
+      @media only screen and (min-width: 900px) {
+         padding-top: 191px;
+      }
+   }
+}
+
+
+// DARKMODE
+.App .darkmode {
+   background: $darkmode-background-dark;
+   .header {
+      background: $darkmode-background-light;
+      box-shadow: 0 2px 4px $darkmode-background-dark;
+   }
+   .above-main {
+      background: $darkmode-background-dark;
    }
 }

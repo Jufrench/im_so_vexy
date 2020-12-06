@@ -17,6 +17,7 @@ class App extends Component {
       activeCountry: '',
       visitedCountries: [],
       darkMode: false,
+      // headerBoxShadow: true,
    }
 
    componentDidMount() {
@@ -28,6 +29,12 @@ class App extends Component {
                return { countries_visible: data_countries };
             });
          });
+
+      window.addEventListener('scroll', this.handleScroll);
+   }
+
+   componentWillUnmount() {
+      window.addEventListener('scroll', this.handleScroll);
    }
 
    handleShowAllCountries = () => {
@@ -79,6 +86,12 @@ class App extends Component {
       })
    }
 
+   removeFromVisitedCountries = () => {
+      let copyVisitedCountries = this.state.visitedCountries;
+      copyVisitedCountries.pop();
+      this.setState({ visitedCountries: copyVisitedCountries });
+   }
+   
    handleBackButtonClick = () => {
       let lastVisited = this.state.visitedCountries[this.state.visitedCountries.length - 1];
       let tempCountry = data_countries.map(countryItem => {
@@ -94,12 +107,6 @@ class App extends Component {
       });
    }
 
-   removeFromVisitedCountries = () => {
-      let copyVisitedCountries = this.state.visitedCountries;
-      copyVisitedCountries.pop();
-      this.setState({ visitedCountries: copyVisitedCountries });
-   }
-
    handleToggleLightDarkMode = value => {
       setTimeout(() => {
          this.setState(() => ({
@@ -107,6 +114,8 @@ class App extends Component {
          }));
       }, 150);
    }
+
+   // handleScroll = event => {}
 
    render() {
       return (

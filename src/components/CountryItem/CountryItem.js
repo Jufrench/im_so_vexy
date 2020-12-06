@@ -18,6 +18,14 @@ const CountryItem = props => {
       addToVisitedCountries(location.pathname);
    }
 
+   // const theHeight = () => {
+   //    document.querySelectorAll('.country-flag')[0].
+   // }
+
+   const backImg = {
+      backgroundImage: `url(${props.country.flag})`
+   }
+
    return (
       <li className="country-item" data-alpha3code={props.country.alpha3Code}>
          <Link
@@ -28,11 +36,16 @@ const CountryItem = props => {
                className="country-flag"
                src={props.country.flag}
                alt={"Flag of " + props.country.name} />
+            {/* <div className="backimg"style={backImg}>
+               <img src={props.country.flag} alt={"Flag of " + props.country.name} />
+            </div> */}
             <div className="text-wrap">
                <h2 className="country-name">{props.country.name}</h2>
                <p className="population"><span>Population:</span> {props.country.population}</p>
                <p className="region"><span>Region:</span> {props.country.region}</p>
-               <p className="capital"><span>Capital:</span> {props.country.capital}</p>
+               <p className="capital">
+                  <span>Capital:</span> {props.country.capital !== '' ? props.country.capital : 'n/a'}
+               </p>
             </div>
          </Link>
       </li>

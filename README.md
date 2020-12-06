@@ -4,19 +4,16 @@
 * vex·il·lol·o·gy (/ˌveksəˈläləjē/) (noun) - The study of flags
 
 ### To Do
-* Add font awesome icons
-* Set up Light/Dark mode
-* Manage when a country doesn't have a capital
-   * Ex: United States Minor Outlying Islands
+* Finish styling for Light/Dark mode
 * Put commas in population
 * Update font family (if desired)
 * Use label instead of placeholder for input search
-* Manage when on a detail page, and clicking on a border country
 * Change styling of input & dropdown
 * Refactor dark/light mode toggle
 * Refine box shadow
 * Replace box shadow declaration w/ mixin when applicable
 * Fix: User clicks on a country, uses the browser to navigate back, clicks on a country again, then clicks on the back button to go back.
+* Sticky scroll for header & sub header
 
 
 # Getting Started with Create React App

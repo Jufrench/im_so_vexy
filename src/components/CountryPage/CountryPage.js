@@ -35,7 +35,7 @@ const CountryPage = props => {
       props.handleShowAllCountries();
    }
 
-     // if using border country component, comment out this below.
+   // if using "BorderCountry" component, comment out this below.
    // const handleClickEvents = event => {
    //    handleSetActiveCountry(event);
    //    handleAddToVisitedCountries(the_country.alpha3Code);

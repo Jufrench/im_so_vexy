@@ -2,6 +2,7 @@
 
 .country-item {
    padding-bottom: 40px;
+   // border: 1px solid #333;
 
    // Tablet
    @media only screen and (min-width: 700px) {
@@ -20,6 +21,7 @@
       width: 25%;
    }
 
+   // ANCHOR TAG
    .country-inner {
       box-shadow: 0 0 10px 2px rgba(204, 204, 204, 0.4);
       text-decoration: none;
@@ -27,6 +29,9 @@
       color: #333;
       border-radius: 5px;
       flex: 1 0 auto;
+      border: 1px solid #ccc;
+
+      // border: 1px solid #ed4337;
       &:focus {
          outline: 3px dotted $focus-red;
          outline-offset: 3px;
@@ -35,6 +40,7 @@
    img {
       width: 100%;
       border-radius: 5px 5px 0 0;
+      border: 1px solid #ccc;
    }
    .text-wrap {
       padding: 24px 24px 46px 24px;
@@ -50,3 +56,13 @@
       font-weight: 600;
    }
 }
+
+
+// .backimg {
+//    padding-bottom: 70%;
+//    background-size: cover;
+//    background-position: center;
+//    img {
+//       visibility: hidden;
+//    }
+// }
