@@ -81,17 +81,7 @@ const CountryPage = props => {
                <section className="border-countries">
                   <h3 className="borders-title">Border Countries:</h3>
                   <ul>
-                     {borderCountries.map((borderItem, i) => (
-                        // <li key={i} data-alpha3code={borderItem.alpha3Code}>
-                        //    <Link 
-                        //       to={{
-                        //          pathname: `/${borderItem.alpha3Code}`
-                        //       }}
-                        //       onClick={handleClickEvents}>
-                        //       {borderItem.name} ({borderItem.alpha3Code})
-                        //    </Link>
-                        // </li>
-   
+                     {borderCountries.map((borderItem, i) => (   
                         <BorderCountry 
                            key={i}
                            alpha3Code={borderItem.alpha3Code}
