@@ -1,12 +1,20 @@
 @import '../../App.scss';
+
 .header {
    align-items: center;
    justify-content: space-between;
    padding: 30px 16px;
    box-shadow: 0 2px 4px #ccc;
    h1 {
-      font-size: 1em;
+      font-size: 1.25em;
       margin: 0;
+      a {
+         text-decoration: none;
+         color: $black;
+         &:focus {
+            @include focus-style;
+         }
+      }
    }
    .toggle-darkmode-btn {
       border: none;
@@ -24,117 +32,94 @@
 
 
 .darkmode .header {
-   background-color: $dark-background-light;
+   background-color: $darkmode-background-light;
    h1 {
-      color: $dark-text-color;
+      color: $darkmode-text-color;
 
    }
    .toggle-darkmode-btn {
-      color: $dark-text-color;
-      .far {
-      }
+      color: $darkmode-text-color;
    }
 }
 
 .radio-wrap {
-   // padding-left: 25px;
-   // padding-right: 25px;
    padding: 0 28px;
-   // border: 1px solid black;
    position: relative;
    display: flex;
    align-items: center;
 }
 
-// .radio-wrap-inner {
-//    border: 2px solid #202c36;
-//    // position: relative;
-//    width: 80px;
-//    height: 35px;
-//    border-radius: 20px;
-//    padding: 2px;
-//    display: flex;
-//    justify-content: space-between;
-   .far {
-      font-size: 1.25em;
-      // position: absolute;
-      // top: 50%;
-      // transform: translateY(-50%);
-      // &.fa-moon {
-      //    right: 0;
-      // }
-      // &.fa-sun {
-      //    left: 0;
-      // }
-   }
+.far {
+   font-size: 1.25em;
+}
 
-   input:focus + label {
-      color: red;
-   }
-   label:hover {
-      cursor: pointer;
-   }
-   
-   input#radio-light {
-      position: absolute;
-      // left: -50px;
-      left: -99999px;
-      &:checked ~ .circle-wrap .circle {
-         // background: blue;
-      }
-      &:focus + label {
-         color: red;
-      }
-   }
-   #radio-light + label {
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-   }
+input:focus + label {
+   @include focus-style;
+}
+label:hover {
+   cursor: pointer;
+}
 
-   input#radio-dark {
-      position: absolute;
-      // right: 0;
-      // left: -30px;
-      left: -99999px;
-      &:checked ~ .circle-wrap .circle {
-         // background: indianred;
-         transform: translateX(140%);
-      }
-      &:focus + label {
-         color: red;
-      }
+input#radio-light {
+   position: absolute;
+   left: -99999px;
+   &:checked ~ .circle-wrap .circle {
    }
-   #radio-dark + label {
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
+   &:focus + label {
+      @include focus-style;
    }
+}
+#radio-light + label {
+   position: absolute;
+   left: 0;
+   top: 50%;
+   transform: translateY(-50%);
+}
 
-   .circle-wrap {
-      width: 80px;
-      height: 35px;
-      border: 1px solid #202c36;
-      border-radius: 20px;
-      padding: 4px;
-      display: inline-block;
-      box-shadow: 0 0 5px -1px #000 inset;
+input#radio-dark {
+   position: absolute;
+   left: -99999px;
+   &:checked ~ .circle-wrap .circle {
+      transform: translateX(140%);
    }
-
-   .circle {
-      background: $dark-background-light;
-      height: 100%;
-      width: 28px;
-      border-radius: 20px;
-      border: none;
-      display: inline-block;
-      transition: transform .4s ease-out;
+   &:focus + label {
+      @include focus-style;
    }
-// }
+}
+#radio-dark + label {
+   position: absolute;
+   right: 0;
+   top: 50%;
+   transform: translateY(-50%);
+}
 
+.circle-wrap {
+   width: 80px;
+   height: 35px;
+   border: 1px solid $darkmode-background-dark;
+   border-radius: 20px;
+   padding: 4px;
+   display: inline-block;
+   box-shadow: 0 0 5px -1px $black inset;
+}
+
+.circle {
+   background: $darkmode-background-light;
+   height: 100%;
+   width: 28px;
+   border-radius: 20px;
+   border: none;
+   display: inline-block;
+   transition: transform .4s ease-out;
+}
+
+// ===== DARKMODE =====
 .App .darkmode {
+   .header {
+      h1 a {
+         color: #fff;
+      }
+   }
    .far {
       color: #fff;
    }

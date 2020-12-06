@@ -14,6 +14,9 @@
 * Manage when on a detail page, and clicking on a border country
 * Change styling of input & dropdown
 * Refactor dark/light mode toggle
+* Refine box shadow
+* Replace box shadow declaration w/ mixin when applicable
+* Fix: User clicks on a country, uses the browser to navigate back, clicks on a country again, then clicks on the back button to go back.
 
 
 # Getting Started with Create React App

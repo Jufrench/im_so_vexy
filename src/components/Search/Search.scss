@@ -1,9 +1,11 @@
+@import '../../App.scss';
+
 .search {
    margin-bottom: 24px;
 
    @media only screen and (min-width: 900px) {
       margin: 0;
-      width: 25%;
+      width: 35%;
    }
    .input-wrap {
       position: relative;
@@ -11,7 +13,7 @@
       border-radius: 5px;
       overflow: hidden;
    }
-   input {
+   input[type="text"] {
       width: 100%;
       height: 48px;
       border: none;
@@ -19,19 +21,28 @@
       padding: 0;
       padding-left: 60px;
       transform: translateY(0);
+      font-size: 1.25em;
+
+      // @media only screen and (min-width: 900px) and (max-width: 1170px) {
+      //    width: 35%;
+      // }
+      &:focus {
+         @include focus-style;
+         outline-offset: -2px;
+      }
    }
-   label {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: 22%;
-      font-size: .975em;
-      transition: top .3s ease-in-out;
-      // z-index: 0;
-   }
-   input:focus + label {
-      top: -50%;
-   }
+   // label {
+   //    position: absolute;
+   //    top: 50%;
+   //    transform: translateY(-50%);
+   //    left: 22%;
+   //    font-size: .975em;
+   //    transition: top .3s ease-in-out;
+   //    // z-index: 0;
+   // }
+   // input:focus + label {
+   //    top: -50%;
+   // }
    // input:focus + .fa-search:before {
    //    color: #11875d;
    // }

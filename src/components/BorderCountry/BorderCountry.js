@@ -8,7 +8,10 @@ const BorderCountry = props => {
     }
 
     return (
-        <li key={props.alpha3Code} data-alpha3code={props.alpha3Code}>
+        <li 
+            key={props.alpha3Code} 
+            data-alpha3code={props.alpha3Code}
+            className="border-country">
             <Link 
                 to={{
                     pathname: `/${props.alpha3Code}`

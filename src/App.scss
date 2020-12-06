@@ -1,6 +1,29 @@
-$dark-background-dark: #202c36;
-$dark-background-light: #2b3844;
-$dark-text-color: #fff;
+$darkmode-background-dark: #202c36;
+$darkmode-background-light: #2b3844;
+$darkmode-text-color: #fff;
+$text-color: #333;
+$focus-red: #ed4337;
+$black: #333;
+
+@mixin focus-style {
+   outline: 2px dotted $focus-red;
+   outline-offset: 2px;
+}
+@mixin box-shadow-light {
+   box-shadow: 0 0 5px 2px rgba(204, 204, 204, 0.7)
+}
+@mixin font-300 {
+   font-family: 'Nunito Sans' sans-serif;
+   font-weight: 300;
+}
+@mixin font-600 {
+   font-family: 'Nunito Sans' sans-serif;
+   font-weight: 600;
+}
+@mixin font-800 {
+   font-family: 'Nunito Sans' sans-serif;
+   font-weight: 800;
+}
 
 *, *:before, *:after {
    box-sizing: border-box;
@@ -27,13 +50,11 @@ h1, h2, h3, h4, h5, p {
 
 .App {
    grid-template-columns: 1fr;
-   // background: #fff;
-   // transition: background .3s ease-in-out;
 }
 
 // DARKMODE
 .App .darkmode {
-   background: $dark-background-dark;
+   background: $darkmode-background-dark;
 }
 
 .above-main {
@@ -46,10 +67,6 @@ h1, h2, h3, h4, h5, p {
    }
 }
 
-.sub-header-wrap {
-
-}
-
 .main {
    padding: 0 40px;
    @media only screen and (min-width: 700px) {
@@ -59,10 +76,6 @@ h1, h2, h3, h4, h5, p {
    @media only screen and (min-width: 900px) {
       padding: 0 40px;
    }
-
-   // @media only screen and (min-width: 1024px) {
-   //    padding: 0 40px;
-   // }
 }
 
 .main-ul {
@@ -70,6 +83,5 @@ h1, h2, h3, h4, h5, p {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      // border: 2px solid blue;
    }
 }

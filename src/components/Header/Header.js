@@ -1,5 +1,6 @@
 import React from 'react';
 import './Header.scss';
+import { Link } from 'react-router-dom';
 
 // const Header = () => {
 //    const toggleLightDarkMode = () => {
@@ -60,7 +61,8 @@ const Header = props => {
 
    return (
       <header className="header do-flex">
-         <h1>I&apos;m So Vexy!</h1>
+         {/* <h1>I&apos;m So Vexy!</h1> */}
+         <h1><Link to="/">I&apos;m So Vexy!</Link></h1>
          <div className="light-dark">
             {/* {buttonToShow()} */}
             {/* <button onClick={handleToggleLightDarkMode}>Light/Dark Mode</button> */}

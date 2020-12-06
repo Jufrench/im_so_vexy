@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation, useHistory  } from 'react-router-dom';
 import * as CountriesAPI from '../../CountriesAPI';
 import BorderCountry from '../BorderCountry/BorderCountry';
+import './CountryPage.scss';
 
 const CountryPage = props => {
    const location = useLocation();
@@ -41,41 +42,69 @@ const CountryPage = props => {
    // }
 
    return (
-      <div>
-         {props.visitedCountries.length === 1 ?
-            <Link to="/" onClick={handleButtonToHomeClick}>Back</Link> :
-            <Link 
-               to={{ pathname: props.visitedCountries[props.visitedCountries.length - 1] }} 
-               onClick={handleBackButtonClick}>Back
-            </Link>
-         }
-         <hr />
-         <h1>{the_country.name}</h1>
-         <img src={the_country.flag} alt={"Flag of " + the_country.name}></img>
-         <p><span>Capital: </span>{the_country.capital}</p>
-         <p>{the_country.population}</p>
-         <ul>
-            {borderCountries.map((borderItem, i) => (
-               // <li key={i} data-alpha3code={borderItem.alpha3Code}>
-               //    <Link 
-               //       to={{
-               //          pathname: `/${borderItem.alpha3Code}`
-               //       }}
-               //       onClick={handleClickEvents}>
-               //       {borderItem.name} ({borderItem.alpha3Code})
-               //    </Link>
-               // </li>
-
-               <BorderCountry 
-                  key={i}
-                  alpha3Code={borderItem.alpha3Code}
-                  name={borderItem.name}
-                  setActiveCountry={handleSetActiveCountry}
-                  visitedCountry={the_country.alpha3Code}
-                  addToVisitedCountries={handleAddToVisitedCountries} />
-            ))}
-         </ul>
-      </div>
+      <React.Fragment>
+         <section className="back-button-wrap">
+            {props.visitedCountries.length === 1 ?
+               <Link to="/" onClick={handleButtonToHomeClick}><i className="fas fa-arrow-left"></i>Back</Link> :
+               <Link 
+                  to={{ pathname: props.visitedCountries[props.visitedCountries.length - 1] }} 
+                  onClick={handleBackButtonClick}><i className="fas fa-arrow-left"></i>Back
+               </Link>
+            }
+         </section>
+         <main className="country-info-wrap">
+            <img src={the_country.flag} alt={"Flag of " + the_country.name}></img>
+            <div className="text-wrap">
+               <h2 className="country-name">{the_country.name}</h2>
+               <section className="details details-first">
+                  <p className="native-nave"><span>Native Name: </span>{the_country.nativeName}</p>
+                  <p className="population"><span>Population: </span>{the_country.population}</p>
+                  <p className="region"><span>Region: </span>{the_country.region}</p>
+                  <p className="subregion"><span>Sub Region: </span>{the_country.subregion}</p>
+                  <p className="capital"><span>Capital: </span>{the_country.capital}</p>
+               </section>
+               <section className="details details-second">
+                  <p className="top-level-domain"><span>Top Level Doman: </span>{the_country.topLevelDomain}</p>
+                  <p className="currencies"><span>Currencies: </span>
+                     {the_country.currencies.map((currObj, i, thisArr) => (
+                        thisArr[thisArr.length - 1] === thisArr[i] ? 
+                        currObj.name : currObj.name + ', '
+                     ))}
+                  </p>
+                  <p className="languages"><span>Languages: </span>
+                     {the_country.languages.map((langObj, i, thisArr) => (
+                        thisArr[thisArr.length - 1] === thisArr[i] ? 
+                        langObj.name : langObj.name + ', '
+                     ))}
+                  </p>
+               </section>
+               <section className="border-countries">
+                  <h3 className="borders-title">Border Countries:</h3>
+                  <ul>
+                     {borderCountries.map((borderItem, i) => (
+                        // <li key={i} data-alpha3code={borderItem.alpha3Code}>
+                        //    <Link 
+                        //       to={{
+                        //          pathname: `/${borderItem.alpha3Code}`
+                        //       }}
+                        //       onClick={handleClickEvents}>
+                        //       {borderItem.name} ({borderItem.alpha3Code})
+                        //    </Link>
+                        // </li>
+   
+                        <BorderCountry 
+                           key={i}
+                           alpha3Code={borderItem.alpha3Code}
+                           name={borderItem.name}
+                           setActiveCountry={handleSetActiveCountry}
+                           visitedCountry={the_country.alpha3Code}
+                           addToVisitedCountries={handleAddToVisitedCountries} />
+                     ))}
+                  </ul>
+               </section>
+            </div>
+         </main>
+      </React.Fragment>
    )
 }
 

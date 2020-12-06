@@ -1,0 +1,86 @@
+@import '../../App.scss';
+
+.back-button-wrap {
+    padding: 40px 28px 24px;
+    a {
+        padding: 10px 24px;
+        text-decoration: none;
+        color: $text-color;
+        display: inline-block;
+        @include box-shadow-light;
+    }
+    .fa-arrow-left {
+        margin-right: 10px;
+    }
+}
+
+.country-info-wrap {
+    padding: 40px 28px;
+    display: flex;
+    flex-direction: column;
+
+    @media only screen and (min-width: 1024px) {
+        flex-direction: row;
+    }
+    img {
+        margin-bottom: 44px;
+        border: 1px solid #ccc;
+
+        @media only screen and (min-width: 1024px) {
+            width: 50%;
+        }
+    }
+    .text-wrap {
+        @media only screen and (min-width: 1024px) {
+            width: 50%;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 50px 0 50px 50px;
+        }
+    }
+    .country-name {
+        margin-bottom: 24px;
+        font-size: 1.25em;
+        @include font-800;
+        @media only screen and (min-width: 1024px) {
+            width: 100%;
+        }
+    }
+    p {
+        font-size: .9em;
+        margin-bottom: 14px;
+        @include font-300;
+        span {
+            @include font-600;
+        }
+    }
+    .details {
+        margin-bottom: 32px;
+        @media only screen and (min-width: 1024px) {
+            width: 50%;
+        }
+    }
+    
+    .borders-title {
+        margin-bottom: 20px;
+        font-size: 1.1em;
+        @include font-600;
+    }
+    .border-countries ul {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -6px;
+    }
+    .border-country {
+        padding: 6px;
+        a {
+            display: inline-block;
+            box-shadow: 0 0 6px #dbdbdb;
+            padding: 6px 12px;
+            text-decoration: none;
+            color: $text-color;
+            font-size: .85em;
+            @include font-300;
+        }
+    }
+}
