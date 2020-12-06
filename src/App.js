@@ -100,14 +100,12 @@ class App extends Component {
       this.setState({ visitedCountries: copyVisitedCountries });
    }
 
-   handleToggleLightDarkMode = () => {
-      this.setState(prevState => ({
-         darkMode: !prevState.darkMode
-      }));
-
+   handleToggleLightDarkMode = value => {
       setTimeout(() => {
-         console.log(this.state.darkMode);
-      }, 1000);
+         this.setState(() => ({
+            darkMode: value
+         }));
+      }, 150);
    }
 
    render() {

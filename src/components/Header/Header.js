@@ -36,29 +36,56 @@ import './Header.scss';
 // ======== HEADER 2 ============
 const Header = props => {
 
-   const handleToggleLightDarkMode = () => {
-      props.toggleLightDarkMode();
+   const handleToggleLightDarkMode = event => {
+      let lightDarkMode;
+      if (event.target.value === 'dark') {
+         lightDarkMode = true;
+      } else {
+         lightDarkMode = false;
+      }
+
+      props.toggleLightDarkMode(lightDarkMode);
    }
 
-   const buttonToShow = () => {
-      let result;
-      
-      props.darkModeState ?
-      result = 
-      <button onClick={handleToggleLightDarkMode}><i className="far fa-sun"></i>Light</button>
-      :
-      result = 
-      <button onClick={handleToggleLightDarkMode}><i className="far fa-moon"></i>Dark</button>
-
-      return result;
-   }
+   // const buttonToShow = () => {
+   //    let result;
+   //    props.darkModeState ?
+   //    result = 
+   //    <button className="toggle-darkmode-btn" onClick={handleToggleLightDarkMode}><i className="far fa-sun"></i>Light</button>
+   //    :
+   //    result = 
+   //    <button className="toggle-darkmode-btn" onClick={handleToggleLightDarkMode}><i className="far fa-moon"></i>Dark</button>
+   //    return result;
+   // }
 
    return (
       <header className="header do-flex">
          <h1>I&apos;m So Vexy!</h1>
          <div className="light-dark">
-            {buttonToShow()}
+            {/* {buttonToShow()} */}
             {/* <button onClick={handleToggleLightDarkMode}>Light/Dark Mode</button> */}
+         </div>
+            {/* <div className="radio-buttons">
+               <div className="radio-light-wrap">
+                  <input id="radio-light" type="radio" name="toggle-light-dark"/>
+                  <label for="radio-light">Light</label>
+               </div>
+               
+               <div className="radio-dark-wrap">
+                  <input id="radio-dark" type="radio" name="toggle-light-dark"/>
+                  <label for="radio-dark">Dark</label>
+               </div>
+            </div> */}
+         <div className="radio-wrap">
+            {/* <div className="radio-wrap-inner"> */}
+               <form onChange={handleToggleLightDarkMode}>
+                  <input id="radio-light" type="radio" name="toggle-light-dark" value="light"/>
+                  <label htmlFor="radio-light"><span className="far fa-sun"></span></label>
+                  <input id="radio-dark" type="radio" name="toggle-light-dark" value="dark" />
+                  <label htmlFor="radio-dark"><span className="far fa-moon"></span></label>
+                  <div className="circle-wrap"><div className="circle"></div></div>
+               </form>
+            {/* </div> */}
          </div>
       </header>
    )

@@ -1,4 +1,6 @@
-$background-dark: #222d35;
+$dark-background-dark: #202c36;
+$dark-background-light: #2b3844;
+$dark-text-color: #fff;
 
 *, *:before, *:after {
    box-sizing: border-box;
@@ -25,10 +27,13 @@ h1, h2, h3, h4, h5, p {
 
 .App {
    grid-template-columns: 1fr;
+   // background: #fff;
+   // transition: background .3s ease-in-out;
 }
 
+// DARKMODE
 .App .darkmode {
-   background: $background-dark;
+   background: $dark-background-dark;
 }
 
 .above-main {
