@@ -63,7 +63,7 @@ const Header = props => {
       <header className="header do-flex box-shadow">
          {/* <h1>I&apos;m So Vexy!</h1> */}
          <div className="title-wrap">
-            <h1 className="title"><Link to="/">I&apos;m So Vexy!</Link></h1>
+            <h1 className="title"><Link to="/">I&apos;m So Vexy!</Link><span className="construction"> (In Construction!)</span></h1>
             <h2 className="vexillology">Vex·il·lol·o·gy <span className="phonetic">(/ˌveksəˈläləjē/)</span><span className="definition">The study of flags</span></h2>
          </div>
          <div className="light-dark">
