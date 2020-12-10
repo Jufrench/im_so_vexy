@@ -5,7 +5,7 @@
    justify-content: space-between;
    padding: 22px 16px;
 
-   h1 {
+   .title {
       font-size: 1.25em;
       margin: 0;
       a {
@@ -13,6 +13,22 @@
          color: $black;
          &:focus {
             @include focus-style;
+         }
+      }
+   }
+   .vexillology {
+      font-size: .925em;
+      font-weight: 400;
+      span {
+         display: block;
+      }
+
+      @media only screen and (min-width: 700px) {
+         span {
+            display: inline;
+         }
+         .definition:before {
+            content: " - ";
          }
       }
    }
@@ -34,7 +50,10 @@
 .App .darkmode {
    .header {
       background-color: $darkmode-background-light;
-      h1 a {
+      .title a {
+         color: $darkmode-text-color;
+      }
+      .vexillology {
          color: $darkmode-text-color;
       }
    }
@@ -44,12 +63,8 @@
    .far {
       color: #fff;
    }
-   .circle-wrap {
-      border-color: #fff;
-      box-shadow: 0 0 5px -1px #fff inset;
-   }
    .circle {
-      background: #fff;
+      background-color: rgb(88, 166, 255);
    }
 
 }
@@ -76,18 +91,14 @@
    // transition: flex-start 1.5s ease-out;
 
    .circle {
-      background: #ed4337;
+      background-color: #ed4337;
       position: absolute;
       border-radius: 20px;
-      // left: 0;
-      // right: 0;
-      // transition: left 1s ease-out;
-      // transition: right 1s ease-out;
       width: 26px;
       height: 20px;
       top: 50%;
       transform: translate(6%, -50%);
-      transition: transform .3s ease-out;
+      transition: transform .3s ease-out, background-color 100ms linear;
    }
 
    input {

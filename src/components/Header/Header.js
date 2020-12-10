@@ -62,7 +62,10 @@ const Header = props => {
    return (
       <header className="header do-flex box-shadow">
          {/* <h1>I&apos;m So Vexy!</h1> */}
-         <h1><Link to="/">I&apos;m So Vexy!</Link></h1>
+         <div className="title-wrap">
+            <h1 className="title"><Link to="/">I&apos;m So Vexy!</Link></h1>
+            <h2 className="vexillology">Vex·il·lol·o·gy <span className="phonetic">(/ˌveksəˈläləjē/)</span><span className="definition">The study of flags</span></h2>
+         </div>
          <div className="light-dark">
             {/* {buttonToShow()} */}
             {/* <button onClick={handleToggleLightDarkMode}>Light/Dark Mode</button> */}
@@ -87,7 +90,6 @@ const Header = props => {
                   <div className="circle-wrap"><div className="circle"></div></div>
                </form>
          </div> */}
-
          <div className="radio-wrap">
             {/* <div className="radio-wrap-inner"> */}
                <form onChange={handleToggleLightDarkMode}>
@@ -115,6 +117,7 @@ const Header = props => {
                </form>
             {/* </div> */}
          </div>
+         {/* <h2 className="definition">Vex·il·lol·o·gy (/ˌveksəˈläləjē/) <span>- The study of flags</span></h2> */}
       </header>
    )
 }
