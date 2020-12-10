@@ -1,5 +1,5 @@
 # I'm So Vexy
-## (Currently Under Construction)
+## (Currently In Progress)
 * A app for all the amateur & professional vexillologists out there!
 * vex·il·lol·o·gy (/ˌveksəˈläləjē/) (noun) - The study of flags
 
@@ -9,10 +9,10 @@
 * Update font family (if desired)
 * Use label instead of placeholder for input search
 * Change styling of input & dropdown
-* Refactor dark/light mode toggle
+* √ Refactor dark/light mode toggle
 * Refine box shadow
 * Replace box shadow declaration w/ mixin when applicable
-* Fix: User clicks on a country, uses the browser to navigate back, clicks on a country again, then clicks on the back button to go back.
+* Mobile Fix: User clicks on a country, uses the browser to navigate back, clicks on a country again, then clicks on the back button to go back.
 * Sticky scroll for header & sub header
 
 
