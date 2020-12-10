@@ -78,14 +78,40 @@ const Header = props => {
                   <label for="radio-dark">Dark</label>
                </div>
             </div> */}
-         <div className="radio-wrap">
-            {/* <div className="radio-wrap-inner"> */}
+         {/* <div className="radio-wrap">
                <form onChange={handleToggleLightDarkMode}>
                   <input id="radio-light" type="radio" name="toggle-light-dark" value="light"/>
                   <label htmlFor="radio-light"><span className="far fa-sun"></span></label>
                   <input id="radio-dark" type="radio" name="toggle-light-dark" value="dark" />
                   <label htmlFor="radio-dark"><span className="far fa-moon"></span></label>
                   <div className="circle-wrap"><div className="circle"></div></div>
+               </form>
+         </div> */}
+
+         <div className="radio-wrap">
+            {/* <div className="radio-wrap-inner"> */}
+               <form onChange={handleToggleLightDarkMode}>
+                  {/* <div className="inner-wrap">
+                     <span className="far fa-sun"></span>
+                     <div className="input-circle-wrap">
+                        <label htmlFor="light"></label>
+                        <input id="light" type="radio" name="toggle-light-dark" value="light" />
+                        <input id="dark" type="radio" name="toggle-light-dark" value="dark" />
+                        <label htmlFor="dark"></label>
+                        <div className="circle"></div>
+                     </div>
+                     <span className="far fa-moon"></span>
+                  </div> */}
+
+                  <div className="inner-wrap">
+                     <div className="input-circle-wrap">
+                        <input id="light" type="radio" name="toggle-light-dark" value="light" />
+                        <label className="for-light" htmlFor="light"><span className="far fa-sun"></span></label>
+                        <input id="dark" type="radio" name="toggle-light-dark" value="dark" />
+                        <label className="for-dark" htmlFor="dark"><span className="far fa-moon"></span></label>
+                        <div className="circle"></div>
+                     </div>
+                  </div>
                </form>
             {/* </div> */}
          </div>

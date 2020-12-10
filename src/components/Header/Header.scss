@@ -30,95 +30,16 @@
    }
 }
 
-
-.darkmode .header {
-   background-color: $darkmode-background-light;
-   h1 {
-      color: $darkmode-text-color;
-
-   }
-   .toggle-darkmode-btn {
-      color: $darkmode-text-color;
-   }
-}
-
-.radio-wrap {
-   padding: 0 28px;
-   position: relative;
-   display: flex;
-   align-items: center;
-}
-
-.far {
-   font-size: 1.25em;
-}
-
-input:focus + label {
-   @include focus-style;
-}
-label:hover {
-   cursor: pointer;
-}
-
-input#radio-light {
-   position: absolute;
-   left: -99999px;
-   &:checked ~ .circle-wrap .circle {
-   }
-   &:focus + label {
-      @include focus-style;
-   }
-}
-#radio-light + label {
-   position: absolute;
-   left: 0;
-   top: 50%;
-   transform: translateY(-50%);
-}
-
-input#radio-dark {
-   position: absolute;
-   left: -99999px;
-   &:checked ~ .circle-wrap .circle {
-      transform: translateX(140%);
-   }
-   &:focus + label {
-      @include focus-style;
-   }
-}
-#radio-dark + label {
-   position: absolute;
-   right: 0;
-   top: 50%;
-   transform: translateY(-50%);
-}
-
-.circle-wrap {
-   width: 80px;
-   height: 35px;
-   border: 1px solid $darkmode-background-dark;
-   border-radius: 20px;
-   padding: 4px;
-   display: inline-block;
-   box-shadow: 0 0 5px -1px $black inset;
-}
-
-.circle {
-   background: $darkmode-background-light;
-   height: 100%;
-   width: 28px;
-   border-radius: 20px;
-   border: none;
-   display: inline-block;
-   transition: transform .4s ease-out;
-}
-
 // ===== DARKMODE =====
 .App .darkmode {
    .header {
+      background-color: $darkmode-background-light;
       h1 a {
-         color: #fff;
+         color: $darkmode-text-color;
       }
+   }
+   .input-circle-wrap {
+      border-color: #fff;
    }
    .far {
       color: #fff;
@@ -130,5 +51,86 @@ input#radio-dark {
    .circle {
       background: #fff;
    }
+
 }
 
+
+
+
+.radio-wrap {
+   margin-right: 20px;
+   .inner-wrap {
+      display: flex;
+      align-items: center;
+   }
+}
+
+.input-circle-wrap {
+   border: 2px solid #333;
+   border-radius: 20px;
+   width: 60px;
+   height: 30px;
+   display: flex;
+   // justify-content: flex-start;
+   position: relative;
+   // transition: flex-start 1.5s ease-out;
+
+   .circle {
+      background: #ed4337;
+      position: absolute;
+      border-radius: 20px;
+      // left: 0;
+      // right: 0;
+      // transition: left 1s ease-out;
+      // transition: right 1s ease-out;
+      width: 26px;
+      height: 20px;
+      top: 50%;
+      transform: translate(6%, -50%);
+      transition: transform .3s ease-out;
+   }
+
+   input {
+      position: absolute;
+      opacity: 0;
+      margin: 0;
+      top: -2px;
+      width: 30px;
+      height: 30px;
+      &:hover {
+         cursor: pointer;
+      }
+      &:focus + label {
+         @include focus-style;
+         outline-offset: -2px;
+      }
+   }
+   #light {
+      left: 0;
+   }
+   #light:checked ~ .circle {
+      transform: translate(6%, -50%);
+   }
+   #dark:checked ~ .circle {
+      transform: translate(106%, -50%);
+   }
+   #dark {
+      right: 0;
+   }
+
+   label {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      .far {
+         font-size: 1.4em;
+         margin: 0 6px;
+      }
+   }
+   .for-light {
+      left: -36px;
+   }
+   .for-dark {
+      right: -34px;
+   }
+}

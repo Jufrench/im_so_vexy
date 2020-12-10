@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import './CountryItem.scss';
 
 const CountryItem = props => {
-   const location = useLocation();
+   const location = useLocation()
 
    const handleSetActiveCountry = () => {
       props.setActiveCountry(props.country);
@@ -17,10 +17,6 @@ const CountryItem = props => {
       handleSetActiveCountry();
       addToVisitedCountries(location.pathname);
    }
-
-   // const theHeight = () => {
-   //    document.querySelectorAll('.country-flag')[0].
-   // }
 
    const backImg = {
       backgroundImage: `url(${props.country.flag})`
