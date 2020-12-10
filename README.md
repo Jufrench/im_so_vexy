@@ -9,7 +9,7 @@
 * Update font family (if desired)
 * Use label instead of placeholder for input search
 * Change styling of input & dropdown
-* √ Refactor dark/light mode toggle
+* Refactor dark/light mode toggle to be a pillbox/checkbox toggle
 * Refine box shadow
 * Replace box shadow declaration w/ mixin when applicable
 * Mobile Fix: User clicks on a country, uses the browser to navigate back, clicks on a country again, then clicks on the back button to go back.
