@@ -38,14 +38,23 @@ import { Link } from 'react-router-dom';
 const Header = props => {
 
    const handleToggleLightDarkMode = event => {
-      let lightDarkMode;
-      if (event.target.value === 'dark') {
-         lightDarkMode = true;
-      } else {
-         lightDarkMode = false;
-      }
+      // let lightDarkMode;
+      // if (event.target.value === 'dark') {
+      //    lightDarkMode = true;
+      // } else {
+      //    lightDarkMode = false;
+      // }
 
-      props.toggleLightDarkMode(lightDarkMode);
+      // if (event.target.checked === true) {
+      //    console.log('it\'s checked');
+      //    console.log(event.target.checked);
+      // } else {
+      //    console.log('it\'s NOT checked');
+      //    console.log(event.target.checked);
+      // }
+      // console.log(event);
+
+      props.toggleLightDarkMode(event.target.checked);
    }
 
    // const buttonToShow = () => {
@@ -90,21 +99,9 @@ const Header = props => {
                   <div className="circle-wrap"><div className="circle"></div></div>
                </form>
          </div> */}
-         <div className="radio-wrap">
-            {/* <div className="radio-wrap-inner"> */}
+         {/* <div className="radio-wrap">
+            <div className="radio-wrap-inner">
                <form onChange={handleToggleLightDarkMode}>
-                  {/* <div className="inner-wrap">
-                     <span className="far fa-sun"></span>
-                     <div className="input-circle-wrap">
-                        <label htmlFor="light"></label>
-                        <input id="light" type="radio" name="toggle-light-dark" value="light" />
-                        <input id="dark" type="radio" name="toggle-light-dark" value="dark" />
-                        <label htmlFor="dark"></label>
-                        <div className="circle"></div>
-                     </div>
-                     <span className="far fa-moon"></span>
-                  </div> */}
-
                   <div className="inner-wrap">
                      <div className="input-circle-wrap">
                         <input id="light" type="radio" name="toggle-light-dark" value="light" />
@@ -115,9 +112,16 @@ const Header = props => {
                      </div>
                   </div>
                </form>
-            {/* </div> */}
+            </div>
+         </div> */}
+         <div className="toggle-dark-wrap">
+            <form onChange={handleToggleLightDarkMode}>
+               <label>
+                  <input type="checkbox" value="" />
+                  <span className="slider"></span>
+               </label>
+            </form>
          </div>
-         {/* <h2 className="definition">Vex·il·lol·o·gy (/ˌveksəˈläləjē/) <span>- The study of flags</span></h2> */}
       </header>
    )
 }
