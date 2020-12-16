@@ -68,9 +68,17 @@
 // }
 
 .darkmode {
-   .country-inner {
-      .text-wrap {
-         color: $white;
+   .country-item {
+      img {
+         border: none;
+      }
+      .country-inner {
+         box-shadow: 0 0 6px 5px rgba(0,0,0,.1);
+         background: $darkmode-background-light;
+         border: none;
+         .text-wrap {
+            color: $white;
+         }
       }
    }
 }

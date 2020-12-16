@@ -87,3 +87,26 @@
         }
     }
 }
+
+.darkmode {
+    .back-button-wrap {
+        a {
+            color: $white;
+            box-shadow: 0 0 6px rgba(0,0,0,.1);
+            background: $darkmode-background-light;
+        }
+    }
+    .country-info-wrap {
+        color: $white;
+        img {
+            border: none;
+        }
+        .border-country {
+            a {
+                background: $darkmode-background-light;
+                color: $white;
+                box-shadow: 0 0 6px rgba(0,0,0,.1);
+            }
+        }
+    }
+}
